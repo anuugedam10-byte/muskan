@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f5c4d1" />
+<title>A little something for Muskan 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+:root{--pink:#b64d70;--deep:#87334f;--pale:#fffaf0;--ink:#3e2830;--line:#d9d5c4}
+*{box-sizing:border-box} body{margin:0;min-height:100svh;background:linear-gradient(135deg,#f3b8c9,#e98eaa);font-family:'DM Sans',sans-serif;color:var(--ink);display:grid;place-items:center;padding:18px;overflow-x:hidden}
+.wrap{width:min(100%,760px);min-height:min(760px,calc(100svh - 36px));display:flex;align-items:center;justify-content:center;position:relative}
+.panel{width:100%;min-height:560px;position:relative;overflow:hidden;border-radius:28px;padding:clamp(24px,6vw,54px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background-color:var(--pale);background-image:linear-gradient(#d9d5c455 1px,transparent 1px),linear-gradient(90deg,#d9d5c455 1px,transparent 1px);background-size:27px 27px;box-shadow:0 22px 60px #6e294433;border:1px solid #ffffffa8}
+.panel:before,.panel:after{content:"";position:absolute;z-index:0;pointer-events:none;background:repeating-linear-gradient(90deg,#c95d7b 0 7px,#d97691 7px 14px);width:23%;height:125%;top:-12%;opacity:.85}.panel:before{left:-13%;border-radius:0 55% 55% 0}.panel:after{right:-13%;border-radius:55% 0 0 55%}
+.content{position:relative;z-index:1;width:min(100%,560px)}
+.kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);font-weight:800;margin-bottom:16px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,8vw,4.3rem);line-height:1.05;color:var(--deep);margin:0 0 18px} h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,6vw,3rem);line-height:1.15;color:var(--deep);margin:0 0 18px}
+p{font-size:clamp(1rem,3.5vw,1.2rem);line-height:1.75;margin:10px 0}
+.small{font-size:.9rem;color:#805f69}.flower{font-size:clamp(5rem,20vw,9rem);display:inline-block;filter:drop-shadow(0 10px 8px #b64d7030);animation:bloom 2.8s ease-in-out infinite;transform-origin:50% 85%}@keyframes bloom{0%,100%{transform:rotate(-7deg) scale(.92)}50%{transform:rotate(7deg) scale(1.08)}}
+button{border:0;border-radius:999px;background:var(--pink);color:white;padding:14px 30px;font:700 1.1rem 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 8px 0 #87334f35;transition:transform .18s,background .18s;margin:8px;min-width:120px}button:hover{transform:translateY(-2px);background:var(--deep)}button:active{transform:translateY(2px);box-shadow:0 3px 0 #87334f35}.secondary{background:#fff;color:var(--deep);border:2px solid #c66b87;box-shadow:none}.textbtn{background:transparent;color:var(--deep);box-shadow:none;text-decoration:underline;text-underline-offset:5px;min-width:auto;padding:10px 18px}
+input{width:min(100%,250px);padding:16px;border:2px solid #d98aa2;border-radius:16px;background:#fff;color:var(--deep);font-size:1.5rem;text-align:center;letter-spacing:.45em;outline:none;margin:10px} .error{color:#a52e50;min-height:24px;font-weight:700}
+.hidden{display:none!important}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}.gift{font-size:clamp(6rem,23vw,10rem);cursor:pointer;display:inline-block;animation:float 2s ease-in-out infinite;filter:drop-shadow(0 12px 8px #8c456044)}@keyframes float{50%{transform:translateY(-12px) rotate(3deg)}}
+.letter{text-align:left;background:#fffdf7d9;border:1px solid #ead9d5;border-radius:18px;padding:clamp(18px,4vw,30px);max-height:58vh;overflow:auto;box-shadow:0 8px 24px #7c41501a}.letter p{font-size:clamp(.98rem,3vw,1.08rem);line-height:1.8;margin:0 0 15px}.sparkle{position:absolute;z-index:0;opacity:.5;font-size:1.4rem;animation:drift 6s ease-in-out infinite}@keyframes drift{50%{transform:translateY(-18px) rotate(18deg)}}
+#end h1{font-size:clamp(3rem,12vw,6rem)}
+@media(max-width:520px){body{padding:10px}.wrap{min-height:calc(100svh - 20px)}.panel{min-height:calc(100svh - 20px);border-radius:22px;padding:22px 18px}.panel:before,.panel:after{width:15%}.letter{max-height:55svh}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <main class="panel">
+  <span class="sparkle" style="top:8%;left:13%">✦</span><span class="sparkle" style="top:15%;right:12%;animation-delay:1s">♡</span><span class="sparkle" style="bottom:9%;left:15%;animation-delay:2s">✧</span>
+  <section class="content" id="password">
+   <div class="kicker">A tiny surprise, just for you</div><h1>Before you enter…</h1><p>There's a little something waiting for you. 💗</p><p class="small">Enter our 4-digit code</p>
+   <input id="code" type="password" inputmode="numeric" maxlength="4" placeholder="••••" aria-label="Four digit password" />
+   <div class="error" id="passError"></div><button onclick="unlock()">Unlock ♡</button>
+  </section>
+  <section class="content hidden" id="flower">
+   <div class="kicker">A little flower for you</div><div class="flower">🌷</div><h2>Something is blooming…</h2><p>Just like the warmest feelings, some things deserve a little time. 🌸</p><button onclick="show('ask')">Continue</button>
+  </section>
+  <section class="content hidden" id="ask">
+   <div class="kicker">Made with a little extra care</div><h1>I've made something for you</h1><p>Do you want to see?</p><div class="actions"><button onclick="show('goodGirl')">Yes 💗</button><button class="secondary" onclick="show('nope')">No</button></div>
+  </section>
+  <section class="content hidden" id="nope">
+   <div class="flower" style="font-size:6rem">🐱</div><h2>HOW DARE YOU?</h2><button onclick="show('ask')">Go back</button>
+  </section>
+  <section class="content hidden" id="goodGirl">
+   <div class="flower" style="font-size:6rem">🌸</div><h2>That's my good girl 🌻</h2><button onclick="show('promise')">Click</button>
+  </section>
+  <section class="content hidden" id="promise">
+   <div class="kicker">One thing I want you to know</div><h2>I will never treat you like a sofa.</h2><p>There's a little deeper meaning behind that…</p><button onclick="show('meaning')">Click for deeper meaning ♡</button>
+  </section>
+  <section class="content hidden" id="meaning">
+   <div class="kicker">What I really mean</div><h2>Sofa Theory</h2>
+   <div class="letter">
+    <p>Kya aapne kabhi "Sofa Theory" ke baare mein suna hai? Sofa woh hota hai jiske paas log sirf tab aate hain jab woh thak jaate hain, aur phir uski kadar karna bhool jaate hain kyunki unhe lagta hai woh toh hamesha wahin rahega. Aksar log kisi ko paane tak toh bahut koshish karte hain, par ek baar woh mil jaaye, toh use ek sofa ki tarah for granted lene lagte hain.</p>
+    <p>Par main aapko kabhi sofa ki tarah nahi samjhunga. Muskan ap meri thakaan mitane ki koi aadat ya mera koi timepass nahi hain aap ek zimmedari aur ek khoobsurat ehsaas hain, jise main har roz poore dil se nibhana chahunga and i am willing to learn more about you!</p>
+   </div>
+   <button onclick="show('giftIntro')">Next ♡</button>
+  </section>
+  <section class="content hidden" id="giftIntro">
+   <div class="kicker">A little something, from me to you</div><h2>Here's what I actually mean and what I actually want to say</h2><div class="gift" role="button" tabindex="0" aria-label="Open your surprise" onclick="openGift()" onkeydown="if(event.key==='Enter'||event.key===' ')openGift()">🎁</div><p class="small">Tap the gift to open your surprise</p>
+  </section>
+  <section class="content hidden" id="end">
+   <div class="flower">💗</div><div class="kicker">A song, just for you</div><h1>The End</h1><p>But hopefully, not the end of all the little things still waiting to be written. ♡</p><p class="small" id="musicStatus">Your song is playing…</p>
+  </section>
+ </main>
+</div>
+<audio id="song" src="song.mp3" preload="auto"></audio>
+<script>
+function show(id){document.querySelectorAll('.content').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function unlock(){const val=document.getElementById('code').value;if(val==='2702'){document.getElementById('passError').textContent='';show('flower')}else{document.getElementById('passError').textContent='Not quite… try again 💗';document.getElementById('code').value='';}}
+document.getElementById('code').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+async function openGift(){show('end');const audio=document.getElementById('song');try{audio.currentTime=0;await audio.play();document.getElementById('musicStatus').textContent='Your song is playing… ♫'}catch(e){document.getElementById('musicStatus').textContent='Tap play on your browser if the song did not start.';const b=document.createElement('button');b.textContent='Play song ♫';b.onclick=()=>audio.play();document.getElementById('musicStatus').after(b)}}
+</script>
+</body></html>

@@ -21,7 +21,13 @@ button{border:0;border-radius:999px;background:var(--pink);color:white;padding:1
 input{width:min(100%,250px);padding:16px;border:2px solid #d98aa2;border-radius:16px;background:#fff;color:var(--deep);font-size:1.5rem;text-align:center;letter-spacing:.45em;outline:none;margin:10px} .error{color:#a52e50;min-height:24px;font-weight:700}
 .hidden{display:none!important}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}.gift{font-size:clamp(6rem,23vw,10rem);cursor:pointer;display:inline-block;animation:float 2s ease-in-out infinite;filter:drop-shadow(0 12px 8px #8c456044)}@keyframes float{50%{transform:translateY(-12px) rotate(3deg)}}
 .letter{text-align:left;background:#fffdf7d9;border:1px solid #ead9d5;border-radius:18px;padding:clamp(18px,4vw,30px);max-height:58vh;overflow:auto;box-shadow:0 8px 24px #7c41501a}.letter p{font-size:clamp(.98rem,3vw,1.08rem);line-height:1.8;margin:0 0 15px}.sparkle{position:absolute;z-index:0;opacity:.5;font-size:1.4rem;animation:drift 6s ease-in-out infinite}@keyframes drift{50%{transform:translateY(-18px) rotate(18deg)}}
-#end h1{font-size:clamp(3rem,12vw,6rem)}
+#end{width:min(100%,600px)}
+#end .lyrics-heading{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,6vw,2.5rem);color:var(--deep);margin:0 0 18px}
+.lyrics-card{max-height:62svh;overflow-y:auto;padding:clamp(16px,4vw,26px);border:1px solid #ead9d5;border-radius:22px;background:#fffdf7e8;box-shadow:0 12px 32px #7c41501a;scrollbar-width:thin}
+.lyric-line{font-family:'Playfair Display',serif;font-size:clamp(1.08rem,3.8vw,1.38rem);line-height:1.65;color:#623449;margin:0 0 10px;opacity:0;transform:translateY(18px);animation:lyricReveal .85s cubic-bezier(.2,.7,.2,1) forwards}
+.lyric-line:nth-child(1){animation-delay:.15s}.lyric-line:nth-child(2){animation-delay:.65s}.lyric-line:nth-child(3){animation-delay:1.15s}.lyric-line:nth-child(4){animation-delay:1.65s}.lyric-line:nth-child(5){animation-delay:2.15s}.lyric-line:nth-child(6){animation-delay:2.65s}.lyric-line:nth-child(7){animation-delay:3.15s}.lyric-line:nth-child(8){animation-delay:3.65s}.lyric-line:nth-child(9){animation-delay:4.15s}.lyric-line:nth-child(10){animation-delay:4.65s}.lyric-line:nth-child(11){animation-delay:5.15s}
+@keyframes lyricReveal{to{opacity:1;transform:translateY(0)}}
+.heart-note{font-size:1.5rem;margin-top:18px;animation:heartBeat 1.8s ease-in-out infinite}@keyframes heartBeat{50%{transform:scale(1.18)}}
 @media(max-width:520px){body{padding:10px}.wrap{min-height:calc(100svh - 20px)}.panel{min-height:calc(100svh - 20px);border-radius:22px;padding:22px 18px}.panel:before,.panel:after{width:15%}.letter{max-height:55svh}}
 </style>
 </head>
@@ -61,15 +67,29 @@ input{width:min(100%,250px);padding:16px;border:2px solid #d98aa2;border-radius:
    <div class="kicker">A little something, from me to you</div><h2>Here's what I actually mean and what I actually want to say</h2><div class="gift" role="button" tabindex="0" aria-label="Open your surprise" onclick="openGift()" onkeydown="if(event.key==='Enter'||event.key===' ')openGift()">🎁</div><p class="small">Tap the gift to open your surprise</p>
   </section>
   <section class="content hidden" id="end">
-   <div class="flower">💗</div><div class="kicker">A song, just for you</div><h1>The End</h1><p>But hopefully, not the end of all the little things still waiting to be written. ♡</p><p class="small" id="musicStatus">Your song is playing…</p>
+   <div class="kicker">A few words, straight from my heart</div>
+   <h2 class="lyrics-heading">Aapki tareef mein… 💗</h2>
+   <div class="lyrics-card" aria-label="A few heartfelt lines">
+    <p class="lyric-line">Apki tareef mein kahein kya</p>
+    <p class="lyric-line">Alfaaz hi nahi hain</p>
+    <p class="lyric-line">Jo kuch mera hai sab kuch, apka</p>
+    <p class="lyric-line">Apsay zayada kasam se humko</p>
+    <p class="lyric-line">Koi khaas hi nahi hai</p>
+    <p class="lyric-line">Jinna aanda si mainu pyar karna ji</p>
+    <p class="lyric-line">Main te tere naal kar leya ae</p>
+    <p class="lyric-line">Main te chum lawan ohna raawan nu</p>
+    <p class="lyric-line">Jithon ik wari kadi langheya tu</p>
+    <p class="lyric-line">Gallan do hi ne, hor koi vi nahi</p>
+    <p class="lyric-line">Ya te tu ee ae, ya te koi nahi</p>
+   </div>
+   <div class="heart-note">♡</div>
   </section>
  </main>
 </div>
-<audio id="song" src="song.mp3" preload="auto"></audio>
 <script>
 function show(id){document.querySelectorAll('.content').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 function unlock(){const val=document.getElementById('code').value;if(val==='2702'){document.getElementById('passError').textContent='';show('flower')}else{document.getElementById('passError').textContent='Not quite… try again 💗';document.getElementById('code').value='';}}
 document.getElementById('code').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
-async function openGift(){show('end');const audio=document.getElementById('song');try{audio.currentTime=0;await audio.play();document.getElementById('musicStatus').textContent='Your song is playing… ♫'}catch(e){document.getElementById('musicStatus').textContent='Tap play on your browser if the song did not start.';const b=document.createElement('button');b.textContent='Play song ♫';b.onclick=()=>audio.play();document.getElementById('musicStatus').after(b)}}
+function openGift(){show('end');}
 </script>
 </body></html>

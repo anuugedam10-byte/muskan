@@ -86,12 +86,40 @@ input{width:min(100%,250px);padding:16px;border:2px solid #d98aa2;border-radius:
 
   <div class="heart-note">♡</div>
 </section>
+  <section class="content hidden" id="finalMessage">
+  <div class="flower">💗</div>
+
+  <div class="kicker">One last thing...</div>
+
+  <h2>These are just song lyrics...</h2>
+
+  <div class="letter">
+    <p>
+      But trust me, no words or lyrics could ever
+      express what I feel inside any better than these.
+    </p>
+
+    <p>
+      Somehow, these words say everything that
+      I sometimes struggle to put into words myself.
+    </p>
+  </div>
+
+  <div class="heart-note">♡</div>
+
+  <p class="small">Made with all my heart, just for you. 💗</p>
+</section>
  </main>
 </div>
 <script>
 function show(id){document.querySelectorAll('.content').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
 function unlock(){const val=document.getElementById('code').value;if(val==='2702'){document.getElementById('passError').textContent='';show('flower')}else{document.getElementById('passError').textContent='Not quite… try again 💗';document.getElementById('code').value='';}}
 document.getElementById('code').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
-function openGift(){show('end');}
+function openGift(){
+  show('end');
+  setTimeout(()=>{
+    show('finalMessage');
+  }, 18000);
+}
 </script>
 </body></html>
